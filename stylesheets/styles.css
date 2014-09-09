@@ -183,6 +183,148 @@ footer {
   bottom:50px;
 }
 
+.portfolio-item {  
+  margin: 5px 10px 5px 0px;
+  float:left;
+}
+  .portfolio-item a {
+    display: block;
+    padding: 20px;
+    height: 70px;
+    width: 70px;
+    background-color: #e5e5e5;
+    color: black;
+    text-align: center;
+    border: 1px solid #adadad;
+  }
+  .portfolio-item p {
+    color: black;
+  }
+  .portfolio-item a:hover {
+    /*background-color: #bbbbbb;*/
+    color: black;
+    font-weight: bold;
+  }
+  .portfolio-item a .icon-snake:before{
+    padding-top: 9px;
+    color: #5a5a5a;
+    content: "\e601";
+    font-size: 32px;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+.menu-item a {
+  width: 140px;
+  height: 25px;
+  background: #E4E4E4;
+  padding: 10px;
+  text-align: center;
+  color: #858585;
+  border: 1px solid #adadad;
+  display: block;
+}
+  .menu-item a:hover {
+    color: #5f5f5f;
+    border: 1px solid #5f5f5f;
+  }
+
+  .snake-container {
+    width: 550px;
+    height: 550px;
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    margin-left: -250px;
+    /*background: #f0f0f0;*/
+    border: 1px solid #adadad;
+  }
+
+.modal-dialog {
+  width: 400px;
+  height: 200px;
+  background: rgba(136, 136, 136, 0.4);
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  margin-left: -176px;
+  border-radius: 5px;
+  box-shadow: none;
+}
+  .modal-dialog .modal-body {
+    height: 100px;
+    padding: 50px;
+    text-align: center;
+  }
+    .modal-dialog .modal-body h1 {
+      padding-top: 30px;
+      color: #fffff;
+    }
+    .modal-dialog .modal-body a {
+      display: block;
+      background-color: #A5A5A5;
+      width: 120px;
+      height: 40px;
+      color: #FFF;
+      margin-left: 85px;
+      border: 1px solid #777;
+      font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 25px;
+    }
+    .modal-dialog .modal-body a:hover {
+      background-color: #808080;
+    }
+
+/* SNAKE */
+
+.gameboard-wrapper {
+  /*width:560px; 
+  height:700px; */
+  width: 660px;
+  background: #fff;
+  display: inline-block;
+}
+.board-list {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-padding-start: 0;
+}
+  .board-list .block {
+    height: 20px;
+    width: 20px;
+    background: white;
+    display: block;
+    text-align: center;
+    float: left;
+    margin: 1px;
+  }
+  .food {
+    background: #A5602A !important;
+  }
+  .snake {
+    background: #009206 !important;
+  }
+
+  .snake-row {
+    display: block;
+    float: left;
+    height: 22px;
+  }
+
+.scorecard {
+  background: rgba(114, 114, 114, 0.48);
+  width: 100px;
+  height: 50px;
+  position: fixed;
+  top: 0px;
+  color: rgb(246, 248, 246);
+  font-size: 36px;
+  text-align: center;
+}
+
+
 @media print, screen and (max-width: 960px) {
   
   div.wrapper {
@@ -224,7 +366,7 @@ footer {
   }
   
   header {
-    padding:0;
+    /*padding:0;*/
   }
   
   header ul, header p.view {
@@ -248,7 +390,7 @@ footer {
 
 @media print {
   body {
-    padding:0.4in;
+    /*padding:0.4in;*/
     font-size:12pt;
     color:#444;
   }
