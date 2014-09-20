@@ -1,7 +1,6 @@
 angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$rootScope','$timeout','$modal', function($scope,$rootScope,$timeout,$modal){
 	$rootScope.$on("$routeChangeStart", function(args, to, from){
-		// if(from.$$route.originalPath == '/snake')
-		// 		pause();
+		// not used here
 	});
 
 	var snake,food,moves,playing,direction,growing,timer,state,GRIDSIZE,gameModal;
@@ -47,7 +46,6 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 		        break;
 
 		        case 32: // spacebar
-		        // growing = true;
 		        pause();
 		        break;
 

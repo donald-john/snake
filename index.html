@@ -18,8 +18,12 @@
       <a href="https://donald-john.github.io">
         Go back home!
       </a>
+      <div class="directions">
+        &lt SPACEBAR &gt = pause.
+      </div>
     </div>
     <div class="snake-container">
+      <div class="scorecard">{{score}}</div>
       <ul class="board-list">   
         <div class="snake-row" ng-repeat="row in grid track by row.id">           
           <li ng-repeat="block in row.blocks track by block.id" ng-class="{food:block.type == 'food', snake:block.type =='snake', block:true}"></li>
