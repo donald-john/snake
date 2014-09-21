@@ -199,20 +199,25 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 			$scope.stopGame('lost');
 		}else{
 			clearGrid();
-			if(food.length == 0){
-				var x = Math.floor(Math.random()*GRIDSIZE-1) + 1;
-				var y = Math.floor(Math.random()*GRIDSIZE-1) + 1;
-
-				if($scope.grid[x].blocks[y].type != 'snake')
-					food = [x,y];
-			}
-
 			for(piece in snake){				
 				$scope.grid[snake[piece][0]].blocks[snake[piece][1]].type = 'snake';
 			}
+
+			function makefood(){
+				if(food.length == 0){
+					var x = Math.floor(Math.random()*GRIDSIZE-1) + 1;
+					var y = Math.floor(Math.random()*GRIDSIZE-1) + 1;
+
+					if($scope.grid[x].blocks[y].type != 'snake')
+						food = [x,y];
+				}
+			}
+			
+			while(food.length == 0){
+				makefood();
+			}
 			
 			$scope.grid[food[0]].blocks[food[1]].type = 'food';
-			// checkCollisions();
 			timer = $timeout(gameLoop, 155);
 		}
 		
