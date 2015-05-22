@@ -237,12 +237,6 @@ footer {
   .snake-container {
     width: 550px;
     height: 550px;
-    position: absolute;
-    top: 130px;
-    left: 50%;
-    margin-left: -250px;
-    /*background: #f0f0f0;*/
-    border: 1px solid #adadad;
   }
 
 .modal-dialog {
@@ -277,9 +271,6 @@ footer {
       text-align: center;
       vertical-align: middle;
       font-size: 25px;
-    }
-    .modal-dialog .modal-body a:hover {
-      background-color: #808080;
     }
 
 /* SNAKE */

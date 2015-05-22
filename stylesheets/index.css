@@ -1,0 +1,148 @@
+@font-face {
+  font-family: "Digital";
+  src: url('/fonts/digital-7.ttf?1223047420') format('truetype');
+}
+/* line 3, ../sass/main.scss */
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  background: #454545;
+  overflow: hidden;
+}
+
+/* line 12, ../sass/main.scss */
+h1, h2, h3, h4, ul, li {
+  margin: 0;
+  padding: 0px;
+  display: block;
+}
+
+/* line 18, ../sass/main.scss */
+.menu-item {
+  float: left;
+  width: 225px;
+  height: 100%;
+  background: #252525;
+  position: relative;
+  z-index: 10;
+  -moz-box-shadow: black -2px 1px 12px 4px;
+  -webkit-box-shadow: black -2px 1px 12px 4px;
+  box-shadow: black -2px 1px 12px 4px;
+}
+/* line 26, ../sass/main.scss */
+.menu-item .home-button {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  height: 65px;
+  border: none;
+  background: #252525;
+  color: white;
+  font-size: 20px;
+  display: block;
+}
+/* line 36, ../sass/main.scss */
+.menu-item .home-button h4 {
+  padding: 15px;
+  color: #ffffff;
+}
+/* line 40, ../sass/main.scss */
+.menu-item .home-button:hover {
+  border: none;
+}
+/* line 42, ../sass/main.scss */
+.menu-item .home-button:hover h4 {
+  color: #00CA0A;
+}
+/* line 47, ../sass/main.scss */
+.menu-item .score {
+  width: 100%;
+  height: 225px;
+  background: #000000;
+  display: table;
+}
+/* line 52, ../sass/main.scss */
+.menu-item .score h3 {
+  font-size: 140px;
+  font-family: "Digital";
+  font-weight: normal;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #ffffff;
+}
+/* line 62, ../sass/main.scss */
+.menu-item .directions {
+  font-size: 20px;
+  font-family: "Digital";
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 5px;
+}
+/* line 68, ../sass/main.scss */
+.menu-item .directions h4 {
+  color: #009206;
+}
+/* line 72, ../sass/main.scss */
+.menu-item .timer {
+  bottom: 0px;
+  position: absolute;
+  height: 80px;
+  width: 100%;
+  background: #000000;
+}
+/* line 78, ../sass/main.scss */
+.menu-item .timer h4 {
+  color: #ffffff;
+  font-family: "Digital";
+  font-size: 40px;
+  padding: 10px 40px;
+}
+
+/* line 87, ../sass/main.scss */
+.snake-container {
+  position: absolute;
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding-left: 225px;
+  min-width: 1260px;
+}
+/* line 94, ../sass/main.scss */
+.snake-container .board-list {
+  position: relative;
+  display: inline-block;
+  margin: 80px 80px 80px 30px;
+}
+/* line 98, ../sass/main.scss */
+.snake-container .board-list .snake-row {
+  height: 32px;
+}
+/* line 100, ../sass/main.scss */
+.snake-container .board-list .snake-row li {
+  width: 30px;
+  height: 30px;
+  background: #373737;
+}
+
+/* line 109, ../sass/main.scss */
+.modal {
+  outline: none;
+}
+/* line 111, ../sass/main.scss */
+.modal .modal-dialog {
+  background: #252525;
+  font-family: "Digital";
+}
+/* line 114, ../sass/main.scss */
+.modal .modal-dialog h1 {
+  color: #ffffff;
+}
+/* line 117, ../sass/main.scss */
+.modal .modal-dialog a {
+  background: #009206;
+  margin: 10px auto;
+  border: none;
+}

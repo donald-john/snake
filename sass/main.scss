@@ -1,0 +1,123 @@
+@import "compass/css3/box-shadow";
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    background: #454545;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, ul, li {
+    margin: 0;
+    padding: 0px;
+    display: block;
+}
+
+.menu-item {
+    float: left;
+    width: 225px;
+    height: 100%;
+    background: #252525;
+    position: relative;
+    z-index: 10;
+    @include box-shadow(black -2px 1px 12px 4px);
+    .home-button {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        height: 65px;
+        border: none;
+        background: #252525;
+        color: white;
+        font-size: 20px;
+        display: block;
+        h4 {
+            padding: 15px;
+            color: #ffffff;
+        }
+        &:hover {
+            border: none;
+            h4 {
+                color: #00CA0A;
+            }
+        }
+    }
+    .score {
+        width: 100%;
+        height: 225px;
+        background: #000000;
+        display: table;
+        h3 {
+            font-size: 140px;
+            font-family: "Digital";
+            font-weight: normal;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            color: #ffffff;
+        }
+    }
+    .directions {
+        font-size: 20px;
+        font-family: "Digital";
+        color: #ffffff;
+        text-align: center;
+        padding: 20px 5px;
+        h4 {
+            color: #009206;
+        }
+    }
+    .timer {
+        bottom: 0px;
+        position: absolute;
+        height: 80px;
+        width: 100%;
+        background: #000000;
+        h4 {
+            color: #ffffff;
+            font-family: "Digital";
+            font-size: 40px;
+            padding: 10px 40px;
+        }
+    }
+}
+
+.snake-container {
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    padding-left: 225px;
+    min-width: 1260px;
+    .board-list {
+        position: relative;
+        display: inline-block;
+        margin: 80px 80px 80px 30px;
+        .snake-row {
+            height: 32px;
+            li {
+                width: 30px;
+                height: 30px;
+                background: #373737;
+            }
+        }
+    }
+}
+
+.modal {
+    outline: none;
+    .modal-dialog {
+        background: #252525;
+        font-family: "Digital";
+        h1 {
+            color: #ffffff;
+        }
+        a {
+            background: #009206;
+            margin: 10px auto;
+            border: none;
+        }
+    }
+}

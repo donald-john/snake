@@ -1,49 +1,58 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Snake by donald-john</title>
+	<head>
+		<meta charset="utf-8">
+		<title>Snake by donald-john</title>
+		<link rel="stylesheet" href="stylesheets/styles.css">
+		<link rel="stylesheet" href="stylesheets/index.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body ng-app="snake" ng-controller="SnakeController" ng-init="init()" keypress>
+		<div class="menu-item">
+			<a class="home-button" href="https://donald-john.github.io">
+				<h4>Go back home!</h4>
+			</a>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body ng-app="snake" ng-controller="SnakeController" ng-init="init()" keypress>
+			<div class="score">
+				<h3>{{score}}</h3>
+			</div>
 
-    <div class="menu-item">
-      <a href="https://donald-john.github.io">
-        Go back home!
-      </a>
-      <div class="directions">
-        &lt SPACEBAR &gt = pause. </br>
-        Use your arrows to navigate.
-      </div>
-    </div>
-    <div class="snake-container">
-      <div class="scorecard">{{score}}</div>
-      <ul class="board-list">   
-        <div class="snake-row" ng-repeat="row in grid track by row.id">           
-          <li ng-repeat="block in row.blocks track by block.id" ng-class="{food:block.type == 'food', snake:block.type =='snake', block:true}"></li>
-        </div>
-      </ul>
-    </div>
-    <!-- Bootstrap modals -->
-    <script type="text/ng-template" id="pause.html">
-      <div class="modal-body">
-        <h1>{{message}}</h1>
-        <a class="ok-button" href="" ng-click="ok()">OK</a>
-      </div>
-    </script> 
+			<div class="directions">
+				<h4>Directions</h4>
+				&lt SPACEBAR &gt = pause. </br>
+				Use your arrows to navigate.
+			</div>
+			<div class="timer">
+				<h4>{{time | date:'mm:ss:sss'}}</h4>
+			</div>
+		</div>
 
-    <script type="text/javascript" src="./js/angular.js"></script>
-    <script type="text/javascript" src="./js/angular-route.js"></script>
-    <script type="text/javascript" src="./js/angular-resource.js"></script>
-    <script type="text/javascript" src="./js/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script type="text/javascript" src="./js/controller.js"></script>
-    <script type="text/javascript" src="./js/app.js"></script>
-  </body>
+
+		<div class="snake-container">
+			<!-- <div class="scorecard">{{score}}</div> -->
+			<ul class="board-list">
+				<div class="snake-row" ng-repeat="row in grid track by row.id">
+					<li ng-repeat="block in row.blocks track by block.id" ng-class="{food:block.type == 'food', snake:block.type =='snake', block:true}"></li>
+				</div>
+			</ul>
+		</div>
+
+
+		<!-- Bootstrap modals -->
+		<script type="text/ng-template" id="pause.html">
+		<div class="modal-body">
+			<h1>{{message}}</h1>
+			<a class="ok-button" href="" ng-click="ok()">OK</a>
+		</div>
+		</script>
+		<script type="text/javascript" src="./js/angular.js"></script>
+		<script type="text/javascript" src="./js/angular-route.js"></script>
+		<script type="text/javascript" src="./js/angular-resource.js"></script>
+		<script type="text/javascript" src="./js/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script type="text/javascript" src="./js/controller.js"></script>
+		<script type="text/javascript" src="./js/app.js"></script>
+	</body>
 </html>

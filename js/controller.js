@@ -1,25 +1,26 @@
-angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$rootScope','$timeout','$modal', function($scope,$rootScope,$timeout,$modal){
+angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$rootScope','$timeout','$interval','$modal', function($scope,$rootScope,$timeout,$interval,$modal){
 	$rootScope.$on("$routeChangeStart", function(args, to, from){
 		// not used here
 	});
 
-	var snake,food,moves,playing,direction,growing,timer,state,GRIDSIZE,gameModal;
+	var snake,food,moves,direction,growing,timer,state,GRIDSIZE,gameModal,iterations, timeInterval, milliseconds, millisecondTimer;
+	$scope.score = 0;
+	$scope.time;
 	$scope.init = function(){
 		snake = [[0,0]];
 		food = [];
 		moves = ['r'];
-		playing = true;
 		direction = '';
 		growing = false;
-		timer = null;
 		state = 'play';
 		GRIDSIZE = 25;
-		$scope.score = 0;
 		
-		gameModal;
-
 		clearGrid();		
-		timer = $timeout(gameLoop, 155);
+		timeInterval = 155;
+		iterations = 0;
+		milliseconds = 0;
+		timer = $timeout(gameLoop, timeInterval);
+		millisecondTimer = $interval(getTime, 1);
 	}
 
 	$rootScope.$on('keypress', function(obj, key){
@@ -57,7 +58,9 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 	var pause = function(){
 		if(state == 'paused'){
 			gameModal.dismiss();
+			millisecondTimer = $interval(getTime, 1);
 		}else{
+			$interval.cancel(millisecondTimer);
 			gameModal = $modal.open({
 				templateUrl: 'pause.html',
 				size: 'sm',
@@ -80,7 +83,7 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 			gameModal.result.then(function(){},
 				function(){
 					// Resume game 
-					timer = $timeout(gameLoop, 155);
+					timer = $timeout(gameLoop, timeInterval);
 					state = 'play';
 				});
 
@@ -88,7 +91,6 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 				snake: snake,
 				food: food,
 				moves: moves,
-				playing: playing,
 				direction: direction,
 				growing: growing,
 				timer: timer,
@@ -101,7 +103,6 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 			// 	snake: snake,
 			// 	food: food,
 			// 	moves: moves,
-			// 	playing: playing,
 			// 	direction: direction,
 			// 	growing: growing,
 			// 	timer: timer,
@@ -139,6 +140,7 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 		var prev;
 		var temp;
 		var dir = moves.shift();
+		iterations++;
 		if(dir != undefined)
 			direction = dir;
 
@@ -179,18 +181,6 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 		};
 
 		paint();
-
-	}
-
-	var checkCollisions = function(){
-		// did they win?
-		top:
-		for (var i = 0; i < GRIDSIZE; i++) {
-			for (var j = 0; j < GRIDSIZE; j++) {
-				if($scope.grid[i].blocks[j].type == 'empty')
-					break top; // we know they didnt win yet
-			};
-		};
 	}
 
 	var paint = function(){
@@ -218,13 +208,13 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 			}
 			
 			$scope.grid[food[0]].blocks[food[1]].type = 'food';
-			timer = $timeout(gameLoop, 155);
-		}
-		
+			timer = $timeout(gameLoop, timeInterval);
+		}		
 	}
 
 	$scope.stopGame = function(reason){
 		$timeout.cancel(timer);
+		$interval.cancel(millisecondTimer);
 		state = 'stop';
 		gameModal = $modal.open({
 			templateUrl: 'pause.html',
@@ -232,7 +222,7 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 			controller: pauseController,
 			resolve: {
 				message: function(){
-					return 'Oh snap!... You lost!'
+					return 'GAME OVER!'
 				},
 				ok: function(){
 					return function(){
@@ -241,7 +231,6 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 						snake = [[0,0]];
 						food = [];
 						moves = ['r'];
-						playing = true;
 						direction = '';
 						growing = false;
 						timer = null;
@@ -252,13 +241,16 @@ angular.module('snake.controllers',[]).controller('SnakeController',['$scope','$
 					}
 				}
 			},
-		}, function(){
-			console.log('open')
-		});
+		}, function(){});
 		gameModal.result.then(function(){},function(){
 				// Resume game 
 				state = 'play';
 			});
+	}
+
+	var getTime = function() {
+		milliseconds+=5;
+		$scope.time = new Date(1970, 0, 1).setMilliseconds(milliseconds);
 	}
 
 }]);
