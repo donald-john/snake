@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Digital";
-  src: url('/fonts/digital-7.ttf?1223047420') format('truetype');
+  src: url('/fonts/snake/digital-7.ttf') format('truetype');
 }
 /* line 3, ../sass/main.scss */
 html, body {
